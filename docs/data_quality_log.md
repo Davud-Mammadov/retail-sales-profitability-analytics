@@ -9,14 +9,14 @@ This document logs all identified data quality issues within the raw dataset (`R
 
 | Issue ID | Table | Column(s) | Description | Impact | Proposed Action |
 |---|---|---|---|---|---|
-| **DQ-001** | `SalesLines_Raw` | `SalesLineID` | Duplicate record found for `SalesLineID = 11`. | Distorts total sales volume and revenue calculations. | Remove duplicate row during data cleaning. |
-| **DQ-002** | `SalesLines_Raw` | `ProductID` | Sales lines contain `ProductID` values that do not exist in `Products_Raw`. | Prevents proper joins with the product catalog (orphaned sales). | Identify missing product references and handle via `LEFT JOIN` or clean mappings. |
-| **DQ-003** | `Customers_Raw` | `RegistrationDate` | Date formats are inconsistent across rows. | Causes parsing errors during database import or DAX calculations. | Standardize to `YYYY-MM-DD` format. |
-| **DQ-004** | `SalesTargets_Raw` | `SalesTarget` | Missing or null values present for certain month/region combinations. | Distorts Target vs. Actual performance tracking. | Impute missing targets or exclude incomplete periods with documentation. |
+| **DQ-001** | `SalesLines_Raw` | `SalesLineID` | Duplicate record found for `SalesLineID = 900048`. | Distorts total sales volume and revenue calculations (1074 total rows vs 1073 unique). | Remove duplicate row during data cleaning / Power Query. |
+| **DQ-002** | `Customers_Raw` | `Segment` | Missing/Null segment value for Customer ID `2038` (Aysel Mammadov). | Causes incomplete customer segmentation analytics. | Flag as `Unknown` or handle as NULL according to business rule. |
+| **DQ-003** | `Customers_Raw` | `RegistrationDate` | Date formats require explicit casting across rows. | Potential parsing issues during database import or DAX logic. | Ensure standardized `YYYY-MM-DD` date formatting. |
+| **DQ-004** | Text Fields | `Region`, `City` | Potential hidden leading/trailing spaces in text strings. | Can cause failed JOINs or fragmented grouping in Power BI/SQL. | Apply `TRIM()` function in Power Query / SQL. |
 
 ---
 
 ## Cleaning Strategy
-1. **Excel Phase:** Perform initial audit and visual checks for duplicates and formatting errors.
-2. **SQL Phase:** Use CTEs, window functions (`ROW_NUMBER()`), and relational joins to isolate clean data models.
-3. **Power BI Phase:** Apply Power Query transformations to ensure data types and relationships remain clean and strict.
+1. **Excel & Power Query Phase:** Identify table granularity, remove duplicates, trim text whitespaces, and validate foreign key integrity across tables.
+2. **SQL Server Phase:** Create relational database structure with Primary and Foreign Keys, import clean tables, and run analytical queries.
+3. **Power BI Phase:** Connect to SQL Server, implement DAX measures (Sales, Cost, Profit, Margin), and build executive dashboard.
