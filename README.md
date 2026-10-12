@@ -3,6 +3,15 @@
 ## 📌 Project Overview
 This portfolio project focuses on analyzing retail sales performance, profitability, and customer behavior using a structured relational dataset. The objective is to transform raw retail data into actionable business insights through data cleaning, SQL analysis, and Power BI visualization.
 
+<p align="center">
+  <a href="screenshots/data-pipeline-overview.jpg">
+    <img
+      src="screenshots/data-pipeline-overview.jpg"
+      alt="Retail Sales Analytics Data Pipeline"
+      width="100%">
+  </a>
+</p>
+
 ## 📊 Repository Structure
 - `excel/` — Contains the raw and cleaned datasets.
 - `docs/` — Project documentation, including the data dictionary and data quality logs.
