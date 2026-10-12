@@ -19,7 +19,7 @@
 </p>
 
 <p align="center">
-  End-to-end retail analytics project: from raw Excel data to a validated SQL Server model and interactive Power BI reporting.
+  End-to-end retail analytics project: from raw Excel data to a validated SQL Server model and interactive Power BI reporting. 🚀
 </p>
 
 <p align="center">
@@ -32,7 +32,7 @@
   </a>
 </p>
 
-> This project uses synthetic data for educational and portfolio purposes.
+> 💡 This project uses synthetic data for educational and portfolio purposes.
 
 ---
 
@@ -43,28 +43,28 @@ Raw Excel → Power Query → Clean CSV → SQL Server Staging
 → Final dbo Model → Data Quality Checks → SQL Analysis → Power BI Dashboard
 ```
 
-This project follows a complete analytics workflow: clean the source data, load it safely into SQL Server, validate the relational model, analyse business performance, and present the results in Power BI.
+This project follows a complete analytics workflow: clean the source data, load it safely into SQL Server, validate the relational model, analyse business performance, and present the results in Power BI. 🔄
 
 ---
 
 ## Excel & Power Query
 
-I used Excel and Power Query to prepare the raw source data for SQL Server.
+I used Excel and Power Query to prepare the raw source data for SQL Server. 🧹
 
-- Removed exact duplicate records.
-- Trimmed and standardized text fields.
-- Applied correct data types.
-- Converted quantity values to whole numbers.
-- Preserved missing values without inventing replacements.
-- Exported clean tables to CSV for SQL Server loading.
+- 🗑️ Removed exact duplicate records.
+- ✂️ Trimmed and standardized text fields.
+- 🔢 Applied correct data types.
+- 📦 Converted quantity values to whole numbers.
+- 🔍 Preserved missing values without inventing replacements.
+- 📄 Exported clean tables to CSV for SQL Server loading.
 
-This stage demonstrates practical data-cleaning and transformation skills before data enters the database.
+This stage demonstrates practical data-cleaning and transformation skills before data enters the database. ✨
 
 ---
 
 ## SQL Server
 
-I built a relational SQL Server model using a staging-to-final-table workflow.
+I built a relational SQL Server model using a staging-to-final-table workflow. 🗄️
 
 CSV files were imported into staging tables first:
 
@@ -75,7 +75,7 @@ CSV files were imported into staging tables first:
 - `stg_ProductTypes`
 - `stg_SalesTargets`
 
-The staging data was then transformed into validated final `dbo` tables.
+The staging data was then transformed into validated final `dbo` tables. ✅
 
 ```text
 Customers (1) ───< Orders (1) ───< SalesLines >─── (1) Products >─── (1) ProductTypes
@@ -83,49 +83,49 @@ Customers (1) ───< Orders (1) ───< SalesLines >─── (1) Product
 
 The SQL work includes:
 
-- Creating typed tables with `INT`, `DATE`, `DECIMAL`, and `NVARCHAR`.
-- Creating primary keys and foreign keys.
-- Loading data through reusable SQL scripts.
-- Checking duplicate keys and orphan records.
-- Reconciling staging and final row counts.
-- Analysing sales, cost, profit, margins, customers, products, discounts, and sales targets.
+- 🔑 Creating typed tables with `INT`, `DATE`, `DECIMAL`, and `NVARCHAR`.
+- 🔗 Creating primary keys and foreign keys.
+- ⚙️ Loading data through reusable SQL scripts.
+- 🕵️ Checking duplicate keys and orphan records.
+- 📊 Reconciling staging and final row counts.
+- 🔎 Analysing sales, cost, profit, margins, customers, products, discounts, and sales targets.
 
 ---
 
 ## Power BI
 
-I connected Power BI to the validated SQL Server `dbo` tables and created a semantic model for reporting.
+I connected Power BI to the validated SQL Server `dbo` tables and created a semantic model for reporting. 📊
 
 The report includes:
 
-- Executive KPI overview.
-- Sales and profit trends by month.
-- Product and category profitability analysis.
-- Regional sales-target attainment.
-- Customer and repeat-purchase analysis.
-- Interactive filtering by date, region, product category, and customer segment.
+- 🎯 Executive KPI overview.
+- 📈 Sales and profit trends by month.
+- 🛍️ Product and category profitability analysis.
+- 🗺️ Regional sales-target attainment.
+- 👥 Customer and repeat-purchase analysis.
+- 🎛️ Interactive filtering by date, region, product category, and customer segment.
 
 The report uses DAX measures for:
 
-- Total Sales
-- Total Cost
-- Total Profit
-- Profit Margin
-- Average Order Value
-- Target Attainment
+- 💰 Total Sales
+- 💸 Total Cost
+- 📈 Total Profit
+- 📊 Profit Margin
+- 🧾 Average Order Value
+- 🎯 Target Attainment
 
 ---
 
 ## Skills Demonstrated
 
-- Data cleaning with Excel and Power Query.
-- SQL Server staging and relational data modeling.
-- Primary key and foreign key implementation.
-- SQL data-quality validation.
-- Business analysis with SQL.
-- Power BI data modeling and DAX.
-- Interactive dashboard design.
-- Clear technical documentation with GitHub.
+- 🧹 Data cleaning with Excel and Power Query.
+- 🗄️ SQL Server staging and relational data modeling.
+- 🔑 Primary key and foreign key implementation.
+- ✅ SQL data-quality validation.
+- 🔍 Business analysis with SQL.
+- 📊 Power BI data modeling and DAX.
+- 🎨 Interactive dashboard design.
+- 📝 Clear technical documentation with GitHub.
 
 ---
 
