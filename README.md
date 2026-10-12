@@ -1,39 +1,26 @@
 # 🛒 Retail Sales & Profitability Analytics
 
 <p align="center">
-  <a href="#project-overview">
-    <img src="https://img.shields.io/badge/Project-Retail%20Analytics-0ea5e9?style=for-the-badge" alt="Retail Analytics">
-  </a>
   <a href="#data-pipeline">
-    <img src="https://img.shields.io/badge/Workflow-End--to--End-8b5cf6?style=for-the-badge" alt="End-to-End Workflow">
+    <img src="https://img.shields.io/badge/Data%20Pipeline-0ea5e9?style=for-the-badge" alt="Data Pipeline">
   </a>
-  <a href="#power-bi-dashboard">
-    <img src="https://img.shields.io/badge/Status-Completed-22c55e?style=for-the-badge" alt="Completed">
-  </a>
-</p>
 
-<p align="center">
   <a href="#excel--power-query">
-    <img src="https://img.shields.io/badge/Excel-217346?style=for-the-badge&logo=microsoftexcel&logoColor=white" alt="Excel">
+    <img src="https://img.shields.io/badge/Excel%20%26%20Power%20Query-217346?style=for-the-badge" alt="Excel and Power Query">
   </a>
-  <a href="#excel--power-query">
-    <img src="https://img.shields.io/badge/Power%20Query-217346?style=for-the-badge&logo=microsoft&logoColor=white" alt="Power Query">
-  </a>
+
   <a href="#sql-server">
-    <img src="https://img.shields.io/badge/SQL%20Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white" alt="SQL Server">
+    <img src="https://img.shields.io/badge/SQL%20Server-CC2927?style=for-the-badge" alt="SQL Server">
   </a>
-  <a href="#power-bi-dashboard">
+
+  <a href="#power-bi">
     <img src="https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black" alt="Power BI">
   </a>
 </p>
 
-<a id="project-overview"></a>
-
-## 🎯 Project Overview
-
-An end-to-end retail analytics project that transforms raw Excel data into a validated SQL Server data model and an interactive Power BI report.
-
-The project demonstrates practical skills in data cleaning, data modeling, SQL validation, business analysis, DAX, and dashboard design.
+<p align="center">
+  End-to-end retail analytics project: from raw Excel data to a validated SQL Server model and interactive Power BI reporting.
+</p>
 
 <p align="center">
   <a href="screenshots/data-pipeline-overview.jpg">
@@ -45,75 +32,106 @@ The project demonstrates practical skills in data cleaning, data modeling, SQL v
   </a>
 </p>
 
-> [!NOTE]
 > This project uses synthetic data for educational and portfolio purposes.
 
-<a id="data-pipeline"></a>
+---
 
-## 🔄 Data Pipeline
+## Data Pipeline
 
 ```text
 Raw Excel → Power Query → Clean CSV → SQL Server Staging
 → Final dbo Model → Data Quality Checks → SQL Analysis → Power BI Dashboard
-<a id="excel--power-query"></a>
-🧹 Excel & Power Query
-I prepared the source data for analysis using Excel and Power Query.
+```
+
+This project follows a complete analytics workflow: clean the source data, load it safely into SQL Server, validate the relational model, analyse business performance, and present the results in Power BI.
+
+---
+
+## Excel & Power Query
+
+I used Excel and Power Query to prepare the raw source data for SQL Server.
+
 - Removed exact duplicate records.
 - Trimmed and standardized text fields.
-- Applied appropriate data types.
-- Converted quantity fields to whole numbers.
+- Applied correct data types.
+- Converted quantity values to whole numbers.
 - Preserved missing values without inventing replacements.
-- Exported cleaned tables as CSV files for SQL Server loading.
-<a id="sql-server"></a>
-🗄️ SQL Server
-I built a structured relational model using a staging-to-final-table approach.
-Staging layer
-CSV files were first loaded into staging tables:
-- stg_Customers
-- stg_Orders
-- stg_SalesLines
-- stg_Products
-- stg_ProductTypes
-- stg_SalesTargets
-Final model
-The staging data was transformed into typed and validated dbo tables:
+- Exported clean tables to CSV for SQL Server loading.
+
+This stage demonstrates practical data-cleaning and transformation skills before data enters the database.
+
+---
+
+## SQL Server
+
+I built a relational SQL Server model using a staging-to-final-table workflow.
+
+CSV files were imported into staging tables first:
+
+- `stg_Customers`
+- `stg_Orders`
+- `stg_SalesLines`
+- `stg_Products`
+- `stg_ProductTypes`
+- `stg_SalesTargets`
+
+The staging data was then transformed into validated final `dbo` tables.
+
+```text
 Customers (1) ───< Orders (1) ───< SalesLines >─── (1) Products >─── (1) ProductTypes
-The model includes:
-- Primary keys and foreign keys.
-- INT, DATE, DECIMAL, and NVARCHAR data types.
-- Transaction-safe loading scripts.
-- Duplicate-key checks.
-- Orphan-record checks.
-- Staging-to-final row-count reconciliation.
-- Reusable SQL scripts for loading, validation, and analysis.
-<a id="analysis"></a>
-📊 SQL Analysis
-I used SQL to answer business questions related to:
-- Monthly sales, cost, profit, and profit margin.
-- Product and category profitability.
-- Regional sales-target attainment.
-- Discount impact on revenue and profit.
-- Repeat customers and average order value.
-- Product-catalog and transactional-data consistency.
-<a id="power-bi-dashboard"></a>
-🟡 Power BI Dashboard
-I connected Power BI to the validated SQL Server dbo tables and built a semantic model for reporting.
+```
+
+The SQL work includes:
+
+- Creating typed tables with `INT`, `DATE`, `DECIMAL`, and `NVARCHAR`.
+- Creating primary keys and foreign keys.
+- Loading data through reusable SQL scripts.
+- Checking duplicate keys and orphan records.
+- Reconciling staging and final row counts.
+- Analysing sales, cost, profit, margins, customers, products, discounts, and sales targets.
+
+---
+
+## Power BI
+
+I connected Power BI to the validated SQL Server `dbo` tables and created a semantic model for reporting.
+
 The report includes:
+
 - Executive KPI overview.
-- Monthly sales and profit trends.
+- Sales and profit trends by month.
 - Product and category profitability analysis.
-- Regional target-attainment analysis.
+- Regional sales-target attainment.
 - Customer and repeat-purchase analysis.
-- Interactive filters for date, region, product category, and customer segment.
-Key DAX measures include:
+- Interactive filtering by date, region, product category, and customer segment.
+
+The report uses DAX measures for:
+
 - Total Sales
 - Total Cost
 - Total Profit
 - Profit Margin
 - Average Order Value
 - Target Attainment
-<a id="repository-structure"></a>
-📂 Repository Structure
+
+---
+
+## Skills Demonstrated
+
+- Data cleaning with Excel and Power Query.
+- SQL Server staging and relational data modeling.
+- Primary key and foreign key implementation.
+- SQL data-quality validation.
+- Business analysis with SQL.
+- Power BI data modeling and DAX.
+- Interactive dashboard design.
+- Clear technical documentation with GitHub.
+
+---
+
+## Repository Structure
+
+```text
 retail-sales-profitability-analytics/
 │
 ├── docs/
@@ -124,12 +142,8 @@ retail-sales-profitability-analytics/
 │   ├── Retail_Sales_Analytics_Raw.xlsx
 │   └── Retail_Sales_Analytics_Clean.xlsx
 │
-├── powerbi/
-│   └── Retail_Sales_Analytics.pbix
-│
 ├── screenshots/
-│   ├── data-pipeline-overview.jpg
-│   └── dashboard-overview.png
+│   └── data-pipeline-overview.jpg
 │
 ├── sql/
 │   ├── 00_staging_import.md
@@ -139,11 +153,4 @@ retail-sales-profitability-analytics/
 │   └── 04_profitability_analysis.sql
 │
 └── README.md
-🛠️ Skills Demonstrated
-- Data cleaning with Excel and Power Query.
-- CSV-based data exchange workflows.
-- SQL Server staging and relational data modeling.
-- SQL validation and business analysis.
-- Data modeling and DAX in Power BI.
-- Interactive dashboard design.
-- Clear documentation and GitHub project presentation.
+```
