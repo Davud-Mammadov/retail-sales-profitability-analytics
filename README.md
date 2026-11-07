@@ -23,6 +23,34 @@ Download the PBIX and open it in Power BI Desktop. Use the saved data to explore
 
 On the product scatter plot, hover over a point for the product tooltip, or right-click and choose **Drill through → Product Details** for a deeper view. Both pages are hidden from the main navigator.
 
+## Report screenshots
+
+### Executive Overview
+
+![Executive Overview showing sales, profit, cost and average order value](screenshots/executive-overview.png)
+
+### Product Performance
+
+![Product Performance showing the sales versus profit scatter plot and category breakdowns](screenshots/product-performance.png)
+
+### Customer Analysis
+
+![Customer Analysis showing customer segments and repeat purchases](screenshots/customer-analysis.png)
+
+### Regional Performance
+
+![Regional Performance comparing sales, profit and product mix across regions](screenshots/regional-performance.png)
+
+### Product tooltip and drill-through
+
+Hover over the highlighted point to see the Energy Drink tooltip.
+
+![Energy Drink tooltip over the highlighted product point](screenshots/product-tooltip.png)
+
+Open **Product Details** from the same point to see its monthly performance, orders by region, contribution and rank.
+
+![Energy Drink drill-through page showing product performance and contribution](screenshots/product-drill-through.png)
+
 ## What the data shows
 
 These full-dataset benchmarks were independently calculated from the cleaned Excel workbook. Clear the report filters before comparing totals.
