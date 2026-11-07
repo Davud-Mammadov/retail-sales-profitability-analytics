@@ -6,6 +6,10 @@ An end-to-end retail analytics project that uses Excel, Power Query, SQL Server,
 
 The dataset is synthetic and intended for portfolio and learning use. It contains 520 orders, 1,073 sales lines, 28 products, 100 customer records, and three regions.
 
+## Data pipeline
+
+[![Retail analytics workflow from raw Excel through Power Query and SQL Server to Power BI](screenshots/data-pipeline-overview.jpg)](screenshots/data-pipeline-overview.jpg)
+
 ## Explore the report
 
 Download the PBIX and open it in Power BI Desktop. Use the saved data to explore the report before refreshing. Use the page navigator and date and region filters to compare results.
@@ -44,5 +48,3 @@ Net sales equal quantity × transaction unit price × (1 − discount). Gross pr
 ```text
 Raw Excel → Power Query → Clean Excel → CSV staging → SQL Server → Power BI
 ```
-
-[View the data pipeline diagram](screenshots/data-pipeline-overview.jpg)
