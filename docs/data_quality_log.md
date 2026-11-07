@@ -36,7 +36,7 @@ To systematically audit the raw dataset, the following data profiling features w
    * Renamed queries by removing `_Raw` suffixes (`SalesLines`, `Orders`, `Products`, `Customers`, `ProductTypes`, `SalesTargets`).
    * Exported cleaned dataset as `Retail_Sales_Analytics_Clean.xlsx`.
 
-2. **Phase 2 — SQL Server (Next Step):**
+2. **Phase 2 — SQL Server:**
    * Create relational database schema with Primary and Foreign Keys (`PK`/`FK`).
    * Import clean dataset into SQL Server.
    * Write analytical SQL queries using `JOIN`, `GROUP BY`, `HAVING`, `CTE`, and Window Functions.
@@ -44,4 +44,4 @@ To systematically audit the raw dataset, the following data profiling features w
 3. **Phase 3 — Power BI Visualization:**
    * Connect to SQL Server database.
    * Implement DAX measures (`Sales`, `Cost`, `Profit`, `Profit Margin`, `AOV`, `Target Attainment`).
-   * Reconcile metrics against SQL outputs and publish executive dashboard.
+   * Compare the report totals against the workbook benchmarks documented in the README.
