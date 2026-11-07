@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 370" width="1200" height="370" role="img" aria-labelledby="title">
+<title id="title">From CSV staging to the relational model</title>
+<rect width="1200" height="370" rx="22" fill="#edf4fc"/>
+<g font-family="Segoe UI,Arial,sans-serif">
+<text x="30" y="38" fill="#2758a1" font-size="15" font-weight="700" letter-spacing="3">SQL WORKFLOW</text>
+<text x="30" y="79" fill="#102846" font-size="32" font-weight="700">From CSV staging to the relational model</text>
+<g transform="translate(30 105)">
+<rect width="365" height="203" rx="14" fill="#fff" stroke="#b6cbe3"/>
+<rect x="12" y="12" width="341" height="35" rx="7" fill="#125a45"/>
+<text x="24" y="35" fill="#fff" font-size="16" font-weight="700">01 / LAND</text>
+<text x="20" y="76" fill="#213d5c" font-family="Segoe UI,Arial,sans-serif" font-size="17">6 CSV exports</text>
+<text x="20" y="101" fill="#213d5c" font-family="Segoe UI,Arial,sans-serif" font-size="17">dbo.stg_Customers</text>
+<text x="20" y="126" fill="#213d5c" font-family="Segoe UI,Arial,sans-serif" font-size="17">dbo.stg_Orders</text>
+<text x="20" y="151" fill="#213d5c" font-family="Segoe UI,Arial,sans-serif" font-size="17">dbo.stg_SalesLines</text>
+<text x="20" y="176" fill="#213d5c" font-family="Segoe UI,Arial,sans-serif" font-size="17">… plus 3 lookup / target tables</text>
+</g>
+<g transform="translate(415 105)">
+<rect width="365" height="203" rx="14" fill="#fff" stroke="#b6cbe3"/>
+<rect x="12" y="12" width="341" height="35" rx="7" fill="#194a9c"/>
+<text x="24" y="35" fill="#fff" font-size="16" font-weight="700">02 / TYPE &amp; LOAD</text>
+<text x="20" y="76" fill="#213d5c" font-family="Consolas,monospace" font-size="17">SET XACT_ABORT ON;</text>
+<text x="20" y="101" fill="#213d5c" font-family="Consolas,monospace" font-size="17">BEGIN TRANSACTION;</text>
+<text x="20" y="126" fill="#213d5c" font-family="Consolas,monospace" font-size="17">INSERT INTO dbo.Orders (…)</text>
+<text x="20" y="151" fill="#213d5c" font-family="Consolas,monospace" font-size="17">SELECT … FROM dbo.stg_Orders;</text>
+<text x="20" y="176" fill="#213d5c" font-family="Consolas,monospace" font-size="17">COMMIT TRANSACTION;</text>
+</g>
+<g transform="translate(800 105)">
+<rect width="365" height="203" rx="14" fill="#fff" stroke="#b6cbe3"/>
+<rect x="12" y="12" width="341" height="35" rx="7" fill="#5d3b92"/>
+<text x="24" y="35" fill="#fff" font-size="16" font-weight="700">03 / RECONCILE</text>
+<text x="20" y="76" fill="#213d5c" font-family="Segoe UI,Arial,sans-serif" font-size="17">Compare staging and final counts</text>
+<text x="20" y="101" fill="#213d5c" font-family="Segoe UI,Arial,sans-serif" font-size="17">Check duplicate keys</text>
+<text x="20" y="126" fill="#213d5c" font-family="Segoe UI,Arial,sans-serif" font-size="17">Check orphaned sales lines</text>
+<text x="20" y="151" fill="#213d5c" font-family="Segoe UI,Arial,sans-serif" font-size="17">Recalculate sales and profit</text>
+</g>
+<text x="30" y="346" fill="#123c69" font-size="19" font-weight="700">Workbook benchmark   •   520 orders   •   1,073 sales lines   •   33.76% margin</text>
+</g></svg>

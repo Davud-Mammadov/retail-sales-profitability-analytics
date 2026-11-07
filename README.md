@@ -1,5 +1,9 @@
 # Retail Sales & Profitability Analytics
 
+![Excel](https://img.shields.io/badge/Excel-Power_Query-217346) ![SQL Server](https://img.shields.io/badge/Database-SQL_Server-BA2027) ![Power BI](https://img.shields.io/badge/Reporting-Power_BI-F2C811)
+
+[Pipeline](#data-pipeline) · [SQL walkthrough](#sql-walkthrough) · [Report screenshots](#report-screenshots) · [Results](#what-the-data-shows)
+
 An end-to-end retail analytics project that uses Excel, Power Query, SQL Server, and Power BI to answer where sales come from, which products generate profit, and how customer behavior varies across segments and regions.
 
 [Download the Power BI report](power-bi/Retail_Sales_Analytics.pbix) · [SQL setup](sql/00_staging_import.md) · [Data dictionary](docs/data_dictionary.md) · [Data quality log](docs/data_quality_log.md)
@@ -9,6 +13,32 @@ The dataset is synthetic and intended for portfolio and learning use. It contain
 ## Data pipeline
 
 [![Retail analytics workflow from raw Excel through Power Query and SQL Server to Power BI](screenshots/data-pipeline-overview.jpg)](screenshots/data-pipeline-overview.jpg)
+
+## SQL walkthrough
+
+![Three stages of the SQL Server workflow: CSV staging, typed transactional load, and reconciliation](screenshots/sql-workflow.svg)
+
+| Stage | What happens | Why it matters |
+| --- | --- | --- |
+| 📥 Land six CSVs | The SQL Server Import Flat File Wizard creates `dbo.stg_*` tables from the cleaned Excel exports. | Imported values stay available for inspection before conversion. |
+| 🧱 Create the final schema | `Customers` and `ProductTypes` define lookups. `Orders` links to customers, `Products` links to types, and `SalesLines` links orders to products. Targets are stored by month and region. | Each table has a clear grain. Foreign keys prevent sales lines from pointing to missing orders or products. |
+| 🔄 Load in dependency order | The load trims text, parses dates and standardizes decimal separators inside a transaction with `XACT_ABORT ON`. | If a conversion or constraint fails, the transaction avoids leaving a partially loaded model. |
+| ✅ Reconcile | The quality script compares staging and final counts and returns any duplicate keys or unmatched relationships. | A matching row count alone can hide broken joins. The key checks catch those separately. |
+
+The order load shows how the staging layer separates imported strings from typed reporting columns.
+
+```sql
+INSERT INTO dbo.Orders (OrderID, OrderDate, CustomerID, Region)
+SELECT TRY_CONVERT(INT, OrderID),
+       TRY_CONVERT(DATE, OrderDate, 104),
+       TRY_CONVERT(INT, CustomerID),
+       LTRIM(RTRIM(Region))
+FROM dbo.stg_Orders;
+```
+
+[Import instructions](sql/00_staging_import.md) · [Final schema](sql/01_create_final_tables.sql) · [Full load](sql/02_load_from_staging.sql) · [Quality checks](sql/03_data_quality_checks.sql)
+
+The analytical SQL joins sales lines to product costs, calculates margin from aggregated profit and sales, and compares actual sales against targets at the same month and region grain. This gives a benchmark for the dashboard KPIs and avoids joining one monthly target to every transaction.
 
 ## Explore the report
 
